@@ -13,8 +13,10 @@
 <meta property="og:url" content="https://telmi.com.br/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Telmi">
-<meta property="og:image" content="https://telmi.com.br/assets/telmi-logo.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://telmi.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-800.woff2" as="font" type="font/woff2" crossorigin>
 <script>
@@ -374,6 +376,10 @@ button{font-family:inherit}
 .form-card input::placeholder{color:var(--muted)}
 .form-card input:focus, .form-card select:focus{border-color:var(--brand); outline:none}
 .form-note{font-size:12px; color:var(--muted); margin-top:14px; text-align:center}
+.form-ok{text-align:center; padding:36px 0}
+.form-ok .ok-emoji{font-size:42px}
+.form-ok h3{font-size:22px; font-weight:800; margin-top:14px}
+.form-ok p{margin-top:8px; color:var(--text-2); font-size:15px}
 
 /* ---------- footer ---------- */
 footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
@@ -935,14 +941,31 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
   document.getElementById('contact-form').addEventListener('submit', function(ev){
     ev.preventDefault();
     var f = ev.target;
-    var body = 'Nome: ' + f.nome.value +
-      '\nEmpresa: ' + f.empresa.value +
-      '\nE-mail: ' + f.email.value +
-      '\nFuncionários: ' + f.tamanho.value +
-      '\n\nOi, Telmi! Quero conhecer a plataforma.';
-    location.href = 'mailto:contato@telmi.com.br?subject=' +
-      encodeURIComponent('Quero conhecer a Telmi — ' + f.empresa.value) +
-      '&body=' + encodeURIComponent(body);
+    var btn = f.querySelector('button[type="submit"]');
+    var note = f.querySelector('.form-note');
+    btn.disabled = true;
+    var original = btn.textContent;
+    btn.textContent = 'Enviando…';
+    fetch('https://telmi.app.n8n.cloud/webhook/site-lead', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        nome: f.nome.value,
+        empresa: f.empresa.value,
+        email: f.email.value,
+        tamanho: f.tamanho.value
+      })
+    }).then(function(res){
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      f.innerHTML = '<div class="form-ok"><div class="ok-emoji">💚</div>' +
+        '<h3>Recebido!</h3>' +
+        '<p>Obrigado pelo interesse — a gente te responde em até 1 dia útil.</p></div>';
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = original;
+      note.textContent = 'Não conseguimos enviar agora — escreva para contato@telmi.com.br que a gente responde rapidinho.';
+      note.style.color = '#E05B5B';
+    });
   });
 })();
 </script>
