@@ -946,9 +946,10 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
     btn.disabled = true;
     var original = btn.textContent;
     btn.textContent = 'Enviando…';
-    fetch('https://telmi.app.n8n.cloud/webhook/site-lead', {
+    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml0dWp3aWdja3hsZXN0cG1tdmJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5NzgzNjQsImV4cCI6MjA0NzU1NDM2NH0.TQ-bKEAIE-A6NQU8hg-vvxuga5LphaFqZun5dDsw8nw';
+    fetch('https://itujwigckxlestpmmvbr.supabase.co/functions/v1/site-lead', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY},
       body: JSON.stringify({
         nome: f.nome.value,
         empresa: f.empresa.value,
