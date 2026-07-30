@@ -1,0 +1,24 @@
+# Telmi
+
+> A Telmi é uma plataforma brasileira de RH que aplica pesquisas, envia comunicados e responde dúvidas de colaboradores pelo WhatsApp, com um agente de IA e um dashboard de indicadores para o time de RH.
+
+## O que a Telmi faz
+
+- **Pesquisas pelo WhatsApp**: pesquisa de clima, eNPS, acompanhamento do período de experiência, pesquisa de desligamento e pulsos rápidos. Os colaboradores respondem com formulários nativos do WhatsApp (WhatsApp Flows) — sem instalar aplicativo, sem link externo, sem senha.
+- **Agente de IA no WhatsApp**: responde dúvidas de RH dos colaboradores (benefícios, folha, políticas internas) com base na base de conhecimento de cada empresa.
+- **Comunicados e celebrações**: envio de comunicados da empresa, mensagens de parabéns por aniversário e por tempo de casa.
+- **Dashboard para o RH**: indicadores como score geral, eNPS, humor do time, participação nas pesquisas, atendimentos do agente e turnover, com visão por unidade/loja e por jornada (experiência, retenção, desligamento).
+
+## Para quem é
+
+Empresas com muitos funcionários operacionais — restaurantes e fast food, indústria de alimentos, varejo e logística — onde o WhatsApp é o canal que todos já usam. O McDonald's está entre os clientes atendidos.
+
+## Implantação
+
+Não exige projeto de TI: a integração com o sistema de departamento pessoal é simples (exportação de planilha já resolve) e o onboarding é conduzido pela Telmi.
+
+## Contato
+
+- Site: https://telmi.com.br/
+- E-mail: contato@telmi.com.br
+- Acesso de clientes: https://app.telmi.com.br/login

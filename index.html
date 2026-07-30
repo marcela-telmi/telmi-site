@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Telmi — Pesquisas e RH via WhatsApp</title>
-<meta name="description" content="A Telmi envia pesquisas, responde dúvidas com IA e transforma cada conversa em indicador — direto no WhatsApp do seu colaborador.">
+<title>Telmi — Pesquisa de clima, eNPS e RH pelo WhatsApp</title>
+<meta name="description" content="A Telmi aplica pesquisa de clima, eNPS e pesquisas de experiência e desligamento pelo WhatsApp, responde dúvidas com IA e transforma cada conversa em indicador para o RH.">
 <link rel="canonical" href="https://telmi.com.br/">
 <link rel="icon" type="image/png" href="/assets/telmi-logo.png">
 <link rel="apple-touch-icon" href="/assets/telmi-logo.png">
-<meta property="og:title" content="Telmi — Pesquisas e RH via WhatsApp">
+<meta property="og:title" content="Telmi — Pesquisa de clima, eNPS e RH pelo WhatsApp">
 <meta property="og:description" content="Pesquisas, agente de IA e comunicados para seus colaboradores, direto no WhatsApp.">
 <meta property="og:url" content="https://telmi.com.br/">
 <meta property="og:type" content="website">
@@ -17,14 +17,98 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://telmi.com.br/#org",
+      "name": "Telmi",
+      "url": "https://telmi.com.br/",
+      "logo": "https://telmi.com.br/assets/telmi-logo.png",
+      "email": "contato@telmi.com.br",
+      "description": "Plataforma de RH que aplica pesquisas, envia comunicados e responde dúvidas de colaboradores pelo WhatsApp, com agente de IA e dashboard de indicadores.",
+      "areaServed": "BR"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Telmi",
+      "url": "https://telmi.com.br/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "publisher": { "@id": "https://telmi.com.br/#org" },
+      "description": "Pesquisa de clima, eNPS, pesquisas de período de experiência e desligamento, comunicados e agente de IA de RH — tudo pelo WhatsApp, com indicadores em um dashboard para o RH."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é a Telmi?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A Telmi é uma plataforma de RH que aplica pesquisas, envia comunicados e responde dúvidas de colaboradores pelo WhatsApp, com um agente de IA e um dashboard de indicadores para o time de RH." }
+        },
+        {
+          "@type": "Question",
+          "name": "Como os colaboradores respondem às pesquisas?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pelo próprio WhatsApp, com formulários nativos (WhatsApp Flows): o colaborador toca no botão, responde e pronto — sem instalar aplicativo, sem link externo e sem senha." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais pesquisas a Telmi aplica?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pesquisa de clima e eNPS recorrentes, acompanhamento do período de experiência, pesquisa de desligamento e pulsos rápidos. A Telmi também envia comunicados da empresa, mensagens de parabéns e de tempo de casa." }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso de um projeto de TI para implantar?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Não. A integração com o seu sistema de departamento pessoal é simples — uma exportação de planilha já resolve — e o onboarding é conduzido pela equipe da Telmi." }
+        },
+        {
+          "@type": "Question",
+          "name": "Para que tipo de empresa a Telmi funciona melhor?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Empresas com muitos funcionários operacionais — restaurantes e fast food, indústria de alimentos, varejo e logística — onde o WhatsApp é o canal que todo mundo já usa no dia a dia." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/plus-jakarta-sans-800.woff2" as="font" type="font/woff2" crossorigin>
 <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId identify setPersonProperties group resetGroups reset get_distinct_id alias set_config startSessionRecording stopSessionRecording captureException opt_in_capturing opt_out_capturing".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_6qx8O4e74QGfDhVpZJNrfWBO3wR6IbxOEvUdNmI7ie9', {
-        api_host:'https://us.i.posthog.com',
-        person_profiles: 'identified_only'
-    })
+// Analytics primeira-parte: pageview + eventos direto na Supabase (Edge
+// Function site-event → tabela site_events → aba Site no admin do dashboard).
+// Sem cookies e sem PII — o visitor id é aleatório, guardado no localStorage.
+window.tlm = (function(){
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml0dWp3aWdja3hsZXN0cG1tdmJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5NzgzNjQsImV4cCI6MjA0NzU1NDM2NH0.TQ-bKEAIE-A6NQU8hg-vvxuga5LphaFqZun5dDsw8nw';
+  function rid(){ return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+  var vid, sid;
+  try {
+    vid = localStorage.getItem('_tlm_vid');
+    if (!vid) { vid = rid(); localStorage.setItem('_tlm_vid', vid); }
+    sid = sessionStorage.getItem('_tlm_sid');
+    if (!sid) { sid = rid(); sessionStorage.setItem('_tlm_sid', sid); }
+  } catch(e) { vid = rid(); sid = vid; }
+  var q = new URLSearchParams(location.search);
+  function send(type, name){
+    try {
+      fetch('https://itujwigckxlestpmmvbr.supabase.co/functions/v1/site-event', {
+        method: 'POST', keepalive: true,
+        headers: {'Content-Type':'application/json','apikey':KEY,'Authorization':'Bearer '+KEY},
+        body: JSON.stringify({
+          type: type, name: name || null, vid: vid, sid: sid,
+          path: location.pathname,
+          referrer: document.referrer || null,
+          utm_source: q.get('utm_source'), utm_medium: q.get('utm_medium'),
+          utm_campaign: q.get('utm_campaign'),
+          device: matchMedia('(max-width: 768px)').matches ? 'mobile' : 'desktop'
+        })
+      }).catch(function(){});
+    } catch(e) {}
+  }
+  send('pageview');
+  return { track: function(name){ send('event', name); } };
+})();
 </script>
 </head>
 <body>
@@ -855,6 +939,46 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
   </div>
 </section>
 
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Perguntas frequentes</span>
+      <h2>Ficou alguma dúvida?</h2>
+    </div>
+    <style>
+      .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+      .faq-item{background:#fff;border:1px solid var(--ink-100);border-radius:16px;overflow:hidden}
+      .faq-item summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;cursor:pointer;font-weight:600;color:var(--ink-800);list-style:none}
+      .faq-item summary::-webkit-details-marker{display:none}
+      .faq-item summary::after{content:'+';flex:none;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;background:var(--brand-50);color:var(--brand-600);font-weight:600;transition:transform .2s}
+      .faq-item[open] summary::after{content:'–';transform:rotate(180deg)}
+      .faq-item p{padding:0 22px 18px;margin:0;color:var(--ink-500);line-height:1.65;font-size:15px}
+    </style>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>O que é a Telmi?</summary>
+        <p>A Telmi é uma plataforma de RH que aplica pesquisas, envia comunicados e responde dúvidas de colaboradores pelo WhatsApp, com um agente de IA e um dashboard de indicadores para o time de RH.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Como os colaboradores respondem às pesquisas?</summary>
+        <p>Pelo próprio WhatsApp, com formulários nativos (WhatsApp Flows): o colaborador toca no botão, responde e pronto — sem instalar aplicativo, sem link externo e sem senha.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quais pesquisas a Telmi aplica?</summary>
+        <p>Pesquisa de clima e eNPS recorrentes, acompanhamento do período de experiência, pesquisa de desligamento e pulsos rápidos. A Telmi também envia comunicados da empresa, mensagens de parabéns e de tempo de casa.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso de um projeto de TI para implantar?</summary>
+        <p>Não. A integração com o seu sistema de departamento pessoal é simples — uma exportação de planilha já resolve — e o onboarding é conduzido pela equipe da Telmi.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Para que tipo de empresa a Telmi funciona melhor?</summary>
+        <p>Empresas com muitos funcionários operacionais — restaurantes e fast food, indústria de alimentos, varejo e logística — onde o WhatsApp é o canal que todo mundo já usa no dia a dia.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="section contact" id="contato">
   <div class="container contact-grid">
     <div class="contact-left reveal">
@@ -938,6 +1062,14 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
     els.forEach(function(el){ io.observe(el); });
   }
 
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a || !window.tlm) return;
+    var href = a.getAttribute('href') || '';
+    if (href === '#contato') tlm.track('cta_contato');
+    else if (href.indexOf('app.telmi.com.br') !== -1) tlm.track('cta_entrar');
+  });
+
   document.getElementById('contact-form').addEventListener('submit', function(ev){
     ev.preventDefault();
     var f = ev.target;
@@ -958,6 +1090,7 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
       })
     }).then(function(res){
       if (!res.ok) throw new Error('HTTP ' + res.status);
+      if (window.tlm) tlm.track('form_submit');
       f.innerHTML = '<div class="form-ok"><div class="ok-emoji">💚</div>' +
         '<h3>Recebido!</h3>' +
         '<p>Obrigado pelo interesse — a gente te responde em até 1 dia útil.</p></div>';

@@ -1,0 +1,7 @@
+# telmi.com.br — todos os crawlers são bem-vindos,
+# incluindo bots de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://telmi.com.br/sitemap.xml
