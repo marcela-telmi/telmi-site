@@ -110,6 +110,24 @@ window.tlm = (function(){
   return { track: function(name){ send('event', name); } };
 })();
 </script>
+<script>
+// Escala do layout em telas largas: o design é fixo em ~1120px, então em vez de
+// deixá-lo numa coluna centralizada com margens enormes, aplicamos `zoom`
+// proporcional à largura da janela (contínuo, com teto) direto no <html> —
+// roda antes do primeiro paint pra não piscar. Abaixo de 1360px o zoom é 1 e as
+// media queries de tablet/mobile do CSS cuidam do resto. Fallback sem-JS: os
+// breakpoints html{zoom} no <style>.
+(function(){
+  var BASE = 1360, MAX = 2.6;
+  function fitZoom(){
+    var w = window.innerWidth || document.documentElement.clientWidth;
+    var z = w > BASE ? Math.min(w / BASE, MAX) : 1;
+    document.documentElement.style.zoom = z;
+  }
+  fitZoom();
+  addEventListener('resize', fitZoom, {passive:true});
+})();
+</script>
 </head>
 <body>
 <style>
@@ -150,6 +168,17 @@ img{max-width:100%}
 button{font-family:inherit}
 
 .container{max-width:1120px; margin:0 auto; padding:0 24px}
+/* O design inteiro é definido em px sobre um container de 1120px. Em telas
+   largas escalamos tudo proporcionalmente (mockups inclusive) via `zoom` no
+   <html>. O valor contínuo é calculado por JS (fitZoom, no <head>); estes
+   breakpoints são só o fallback sem-JS — por isso vão em html{} (o inline do
+   JS sobrepõe). Nada compõe zoom porque é sempre o mesmo elemento. */
+@media (min-width:1360px){ html{zoom:1.06} }
+@media (min-width:1600px){ html{zoom:1.20} }
+@media (min-width:1920px){ html{zoom:1.42} }
+@media (min-width:2300px){ html{zoom:1.72} }
+@media (min-width:2800px){ html{zoom:2.06} }
+@media (min-width:3400px){ html{zoom:2.40} }
 .section{padding:96px 0}
 .eyebrow{
   display:inline-flex; align-items:center; gap:8px;
@@ -276,6 +305,10 @@ button{font-family:inherit}
   @keyframes pop{to{opacity:1; transform:none}}
   .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1; transform:none}
+  .modules .reveal:nth-child(3n+2), .journeys .reveal:nth-child(2), .how .reveal:nth-child(2),
+  .results-grid .reveal:nth-child(2), .form-card.reveal{transition-delay:.1s}
+  .modules .reveal:nth-child(3n), .journeys .reveal:nth-child(3), .how .reveal:nth-child(3),
+  .results-grid .reveal:nth-child(3){transition-delay:.2s}
 }
 
 /* ---------- clients ---------- */
@@ -1050,16 +1083,35 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
 <script>
 (function(){
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var els = document.querySelectorAll('.reveal');
-  if (reduced || !('IntersectionObserver' in window)) {
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if (reduced) {
     els.forEach(function(el){ el.classList.add('in'); });
   } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    // Revela por posição de scroll (rAF) em vez de IntersectionObserver: saltos
+    // de scroll (âncora com smooth scroll, End/PgDn, flick rápido) pulavam a
+    // interseção e a seção ficava invisível.
+    var ticking = false;
+    function sweep(){
+      ticking = false;
+      els = els.filter(function(el){
+        if (el.getBoundingClientRect().top < innerHeight * 0.92){
+          el.classList.add('in');
+          return false;
+        }
+        return true;
       });
-    }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
-    els.forEach(function(el){ io.observe(el); });
+      if (!els.length){
+        removeEventListener('scroll', onScroll);
+        removeEventListener('resize', onScroll);
+      }
+    }
+    function onScroll(){
+      if (!ticking){ ticking = true; requestAnimationFrame(sweep); }
+    }
+    addEventListener('scroll', onScroll, {passive:true});
+    addEventListener('resize', onScroll);
+    addEventListener('load', onScroll);
+    sweep();
   }
 
   document.addEventListener('click', function(ev){
