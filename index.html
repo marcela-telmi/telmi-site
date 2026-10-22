@@ -80,7 +80,7 @@
 // Function site-event → tabela site_events → aba Site no admin do dashboard).
 // Sem cookies e sem PII — o visitor id é aleatório, guardado no localStorage.
 window.tlm = (function(){
-  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml0dWp3aWdja3hsZXN0cG1tdmJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5NzgzNjQsImV4cCI6MjA0NzU1NDM2NH0.TQ-bKEAIE-A6NQU8hg-vvxuga5LphaFqZun5dDsw8nw';
+  var KEY = 'sb_publishable_ipFi9UJwiyWQy4yZXoXjzA_Pwo2_h5i';
   function rid(){ return Math.random().toString(36).slice(2) + Date.now().toString(36); }
   var vid, sid;
   try {
@@ -94,7 +94,7 @@ window.tlm = (function(){
     try {
       fetch('https://itujwigckxlestpmmvbr.supabase.co/functions/v1/site-event', {
         method: 'POST', keepalive: true,
-        headers: {'Content-Type':'application/json','apikey':KEY,'Authorization':'Bearer '+KEY},
+        headers: {'Content-Type':'application/json','apikey':KEY},
         body: JSON.stringify({
           type: type, name: name || null, vid: vid, sid: sid,
           path: location.pathname,
@@ -1130,10 +1130,10 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
     btn.disabled = true;
     var original = btn.textContent;
     btn.textContent = 'Enviando…';
-    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml0dWp3aWdja3hsZXN0cG1tdmJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5NzgzNjQsImV4cCI6MjA0NzU1NDM2NH0.TQ-bKEAIE-A6NQU8hg-vvxuga5LphaFqZun5dDsw8nw';
+    var SB_KEY = 'sb_publishable_ipFi9UJwiyWQy4yZXoXjzA_Pwo2_h5i';
     fetch('https://itujwigckxlestpmmvbr.supabase.co/functions/v1/site-lead', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY},
+      headers: {'Content-Type': 'application/json', 'apikey': SB_KEY},
       body: JSON.stringify({
         nome: f.nome.value,
         empresa: f.empresa.value,
