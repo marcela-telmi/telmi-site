@@ -17,6 +17,11 @@ Empresas com muitos funcionários operacionais — restaurantes e fast food, ind
 
 Não exige projeto de TI: a integração com o sistema de departamento pessoal é simples (exportação de planilha já resolve) e o onboarding é conduzido pela Telmi.
 
+## Conteúdos
+
+- [Quanto custa o turnover em fast food (e como calcular o da sua rede)](https://telmi.com.br/blog/custo-do-turnover-fast-food/): Bares e restaurantes trocam 73,5% da equipe por ano. Veja o que entra no custo de cada desligamento, calcule o valor da sua rede e saiba onde agir primeiro.
+- [NR-1 e riscos psicossociais: como ouvir o time operacional e gerar evidência](https://telmi.com.br/blog/nr-1-riscos-psicossociais-operacao/): Desde 26/05/2026 a fiscalização da NR-1 pode autuar quem não gerencia riscos psicossociais. Veja o que muda para restaurantes e fábricas e como registrar a escuta do time.
+
 ## Contato
 
 - Site: https://telmi.com.br/

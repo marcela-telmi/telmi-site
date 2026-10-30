@@ -80,6 +80,8 @@
 // Function site-event → tabela site_events → aba Site no admin do dashboard).
 // Sem cookies e sem PII — o visitor id é aleatório, guardado no localStorage.
 window.tlm = (function(){
+  // Só conta em produção: localhost e o preview do Railway não sujam as métricas.
+  if (!/(^|\.)telmi\.com\.br$/.test(location.hostname)) return { track: function(){} };
   var KEY = 'sb_publishable_ipFi9UJwiyWQy4yZXoXjzA_Pwo2_h5i';
   function rid(){ return Math.random().toString(36).slice(2) + Date.now().toString(36); }
   var vid, sid;
@@ -523,6 +525,7 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
       <a href="#plataforma">Plataforma</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#resultados">Resultados</a>
+      <a href="/blog/">Conteúdos</a>
     </div>
     <div class="nav-cta">
       <a class="btn btn-ghost btn-sm" href="https://app.telmi.com.br/login">Entrar</a>
@@ -1067,6 +1070,7 @@ footer{background:var(--ink-800); color:#A3B4C6; padding:52px 0 40px}
         <div>
           <b>Empresa</b>
           <a href="#contato">Fale com a Telmi</a>
+          <a href="/blog/">Conteúdos</a>
           <a href="mailto:contato@telmi.com.br">contato@telmi.com.br</a>
           <a href="https://app.telmi.com.br/login">Entrar na plataforma</a>
           <a href="https://painel.telmi.com.br">Painel antigo (clientes)</a>

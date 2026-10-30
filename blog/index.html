@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conteúdos sobre RH para times operacionais | Telmi</title>
+<meta name="description" content="Guias práticos sobre NR-1, turnover, pesquisa de clima pelo WhatsApp e comunicação com quem trabalha na loja, na cozinha e na fábrica.">
+<link rel="canonical" href="https://telmi.com.br/blog/">
+<link rel="icon" type="image/png" href="/assets/telmi-logo.png">
+<meta property="og:title" content="Conteúdos sobre RH para times operacionais | Telmi">
+<meta property="og:description" content="Guias práticos sobre NR-1, turnover, pesquisa de clima pelo WhatsApp e comunicação com quem trabalha na loja, na cozinha e na fábrica.">
+<meta property="og:url" content="https://telmi.com.br/blog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Telmi">
+<meta property="og:image" content="https://telmi.com.br/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plus-jakarta-sans-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/content.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Conteúdos Telmi",
+  "url": "https://telmi.com.br/blog/",
+  "inLanguage": "pt-BR",
+  "publisher": {
+    "@id": "https://telmi.com.br/#org"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Quanto custa o turnover em fast food (e como calcular o da sua rede)",
+      "url": "https://telmi.com.br/blog/custo-do-turnover-fast-food/",
+      "datePublished": "2026-10-29"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "NR-1 e riscos psicossociais: como ouvir o time operacional e gerar evidência",
+      "url": "https://telmi.com.br/blog/nr-1-riscos-psicossociais-operacao/",
+      "datePublished": "2026-10-29"
+    }
+  ]
+}
+</script>
+<script>
+// Analytics primeira-parte: pageview + eventos direto na Supabase (Edge
+// Function site-event → tabela site_events → aba Site no admin do dashboard).
+// Sem cookies e sem PII — o visitor id é aleatório, guardado no localStorage.
+window.tlm = (function(){
+  // Só conta em produção: localhost e o preview do Railway não sujam as métricas.
+  if (!/(^|\.)telmi\.com\.br$/.test(location.hostname)) return { track: function(){} };
+  var KEY = 'sb_publishable_ipFi9UJwiyWQy4yZXoXjzA_Pwo2_h5i';
+  function rid(){ return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+  var vid, sid;
+  try {
+    vid = localStorage.getItem('_tlm_vid');
+    if (!vid) { vid = rid(); localStorage.setItem('_tlm_vid', vid); }
+    sid = sessionStorage.getItem('_tlm_sid');
+    if (!sid) { sid = rid(); sessionStorage.setItem('_tlm_sid', sid); }
+  } catch(e) { vid = rid(); sid = vid; }
+  var q = new URLSearchParams(location.search);
+  function send(type, name){
+    try {
+      fetch('https://itujwigckxlestpmmvbr.supabase.co/functions/v1/site-event', {
+        method: 'POST', keepalive: true,
+        headers: {'Content-Type':'application/json','apikey':KEY},
+        body: JSON.stringify({
+          type: type, name: name || null, vid: vid, sid: sid,
+          path: location.pathname,
+          referrer: document.referrer || null,
+          utm_source: q.get('utm_source'), utm_medium: q.get('utm_medium'),
+          utm_campaign: q.get('utm_campaign'),
+          device: matchMedia('(max-width: 768px)').matches ? 'mobile' : 'desktop'
+        })
+      }).catch(function(){});
+    } catch(e) {}
+  }
+  send('pageview');
+  return { track: function(name){ send('event', name); } };
+})();
+</script>
+<script>
+// Escala do layout em telas largas: o design é fixo em ~1120px, então em vez de
+// deixá-lo numa coluna centralizada com margens enormes, aplicamos `zoom`
+// proporcional à largura da janela (contínuo, com teto) direto no <html> —
+// roda antes do primeiro paint pra não piscar. Abaixo de 1360px o zoom é 1 e as
+// media queries de tablet/mobile do CSS cuidam do resto. Fallback sem-JS: os
+// breakpoints html{zoom} no <style>.
+(function(){
+  var BASE = 1360, MAX = 2.6;
+  function fitZoom(){
+    var w = window.innerWidth || document.documentElement.clientWidth;
+    var z = w > BASE ? Math.min(w / BASE, MAX) : 1;
+    document.documentElement.style.zoom = z;
+  }
+  fitZoom();
+  addEventListener('resize', fitZoom, {passive:true});
+})();
+</script>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="/#top" aria-label="Telmi — início">
+      <img src="/assets/telmi-logo.png" alt="">
+      <b>telmi</b>
+    </a>
+    <div class="nav-links">
+      <a href="/#modulos">Produto</a>
+      <a href="/#plataforma">Plataforma</a>
+      <a href="/#como-funciona">Como funciona</a>
+      <a href="/#resultados">Resultados</a>
+      <a href="/blog/">Conteúdos</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="https://app.telmi.com.br/login">Entrar</a>
+      <a class="btn btn-primary btn-sm" href="#contato">Fale com a Telmi</a>
+    </div>
+  </div>
+</nav>
+<main class="art">
+  <div class="container art-wrap art-wrap--wide">
+    <header class="art-head">
+      <span class="eyebrow">Conteúdos</span>
+      <h1>RH para quem não trabalha sentado no computador</h1>
+      <p class="art-lead">Guias práticos sobre NR-1, turnover, pesquisas e comunicação com times de loja, cozinha e fábrica.</p>
+    </header>
+    <div class="art-cards"><a class="art-card" href="/blog/custo-do-turnover-fast-food/"><span class="eyebrow">Turnover e retenção</span><b>Quanto custa o turnover em fast food (e como calcular o da sua rede)</b><span>Bares e restaurantes trocam 73,5% da equipe por ano. Veja o que entra no custo de cada desligamento, calcule o valor da sua rede e saiba onde agir primeiro.</span><small>29/10/2026 · 4 min</small></a><a class="art-card" href="/blog/nr-1-riscos-psicossociais-operacao/"><span class="eyebrow">NR-1 e saúde mental</span><b>NR-1 e riscos psicossociais: como ouvir o time operacional e gerar evidência</b><span>Desde 26/05/2026 a fiscalização da NR-1 pode autuar quem não gerencia riscos psicossociais. Veja o que muda para restaurantes e fábricas e como registrar a escuta do time.</span><small>29/10/2026 · 5 min</small></a></div>
+  </div>
+</main>
+<section class="section contact" id="contato">
+  <div class="container contact-grid">
+    <div class="contact-left reveal">
+      <span class="eyebrow">Fale com a gente</span>
+      <h2>Manda um oi para a Telmi 👋</h2>
+      <p>Curtiu o produto? Conta um pouco da sua operação e a gente mostra a Telmi funcionando com um caso parecido com o seu.</p>
+      <p class="mail">Se preferir, escreva para <a href="mailto:contato@telmi.com.br">contato@telmi.com.br</a></p>
+    </div>
+    <form class="form-card reveal" id="contact-form">
+      <div class="field">
+        <label for="f-nome">Qual é o seu nome?</label>
+        <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Digite seu nome completo" required>
+      </div>
+      <div class="field">
+        <label for="f-empresa">Em que empresa você trabalha?</label>
+        <input id="f-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Digite o nome da empresa" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Qual o seu e-mail profissional?</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="Aquele e-mail que você lê ;)" required>
+      </div>
+      <div class="field">
+        <label for="f-tamanho">Quantos funcionários trabalham na empresa?</label>
+        <select id="f-tamanho" name="tamanho">
+          <option>1–50</option>
+          <option>51–200</option>
+          <option selected>201–1.000</option>
+          <option>Mais de 1.000</option>
+        </select>
+      </div>
+      <button class="btn btn-primary btn-lg" type="submit" style="width:100%">Enviar mensagem</button>
+      <p class="form-note">Sem spam — a gente responde em até 1 dia útil.</p>
+    </form>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="/#top"><img src="/assets/telmi-logo.png" alt=""><b>telmi</b></a>
+        <p>Comunicação eficiente pelo WhatsApp. Fala com a Telmi.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <b>Produto</b>
+          <a href="/#f-pesquisas">Pesquisas</a>
+          <a href="/#f-agente">Agente de IA</a>
+          <a href="/#f-comunicados">Comunicados</a>
+          <a href="/#plataforma">Dashboard</a>
+          <a href="/#jornadas">Jornadas</a>
+        </div>
+        <div>
+          <b>Empresa</b>
+          <a href="#contato">Fale com a Telmi</a>
+          <a href="/blog/">Conteúdos</a>
+          <a href="mailto:contato@telmi.com.br">contato@telmi.com.br</a>
+          <a href="https://app.telmi.com.br/login">Entrar na plataforma</a>
+          <a href="https://painel.telmi.com.br">Painel antigo (clientes)</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Telmi LTDA</span>
+      <span>Feito no Brasil, para times que vivem no WhatsApp.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if (reduced) {
+    els.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    // Revela por posição de scroll (rAF) em vez de IntersectionObserver: saltos
+    // de scroll (âncora com smooth scroll, End/PgDn, flick rápido) pulavam a
+    // interseção e a seção ficava invisível.
+    var ticking = false;
+    function sweep(){
+      ticking = false;
+      els = els.filter(function(el){
+        if (el.getBoundingClientRect().top < innerHeight * 0.92){
+          el.classList.add('in');
+          return false;
+        }
+        return true;
+      });
+      if (!els.length){
+        removeEventListener('scroll', onScroll);
+        removeEventListener('resize', onScroll);
+      }
+    }
+    function onScroll(){
+      if (!ticking){ ticking = true; requestAnimationFrame(sweep); }
+    }
+    addEventListener('scroll', onScroll, {passive:true});
+    addEventListener('resize', onScroll);
+    addEventListener('load', onScroll);
+    sweep();
+  }
+
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a');
+    if (!a || !window.tlm) return;
+    var href = a.getAttribute('href') || '';
+    if (href === '#contato') tlm.track('cta_contato');
+    else if (href.indexOf('app.telmi.com.br') !== -1) tlm.track('cta_entrar');
+  });
+
+  document.getElementById('contact-form').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = ev.target;
+    var btn = f.querySelector('button[type="submit"]');
+    var note = f.querySelector('.form-note');
+    btn.disabled = true;
+    var original = btn.textContent;
+    btn.textContent = 'Enviando…';
+    var SB_KEY = 'sb_publishable_ipFi9UJwiyWQy4yZXoXjzA_Pwo2_h5i';
+    fetch('https://itujwigckxlestpmmvbr.supabase.co/functions/v1/site-lead', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'apikey': SB_KEY},
+      body: JSON.stringify({
+        nome: f.nome.value,
+        empresa: f.empresa.value,
+        email: f.email.value,
+        tamanho: f.tamanho.value
+      })
+    }).then(function(res){
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      if (window.tlm) tlm.track('form_submit');
+      f.innerHTML = '<div class="form-ok"><div class="ok-emoji">💚</div>' +
+        '<h3>Recebido!</h3>' +
+        '<p>Obrigado pelo interesse — a gente te responde em até 1 dia útil.</p></div>';
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = original;
+      note.textContent = 'Não conseguimos enviar agora — escreva para contato@telmi.com.br que a gente responde rapidinho.';
+      note.style.color = '#E05B5B';
+    });
+  });
+})();
+</script>
+</body>
+</html>
