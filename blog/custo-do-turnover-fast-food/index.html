@@ -275,27 +275,59 @@ window.tlm = (function(){
     <form class="form-card reveal" id="contact-form">
       <div class="field">
         <label for="f-nome">Qual é o seu nome?</label>
-        <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Digite seu nome completo" required>
+        <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Digite seu nome completo" required maxlength="200">
       </div>
       <div class="field">
         <label for="f-empresa">Em que empresa você trabalha?</label>
-        <input id="f-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Digite o nome da empresa" required>
+        <input id="f-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Digite o nome da empresa" required maxlength="200">
       </div>
       <div class="field">
         <label for="f-email">Qual o seu e-mail profissional?</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="Aquele e-mail que você lê ;)" required>
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="Aquele e-mail que você lê ;)" required maxlength="200">
+      </div>
+      <div class="field">
+        <label for="f-telefone">WhatsApp <span class="opt">(opcional)</span></label>
+        <input id="f-telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999" maxlength="30">
+      </div>
+      <label class="check" for="f-aceite"><input id="f-aceite" name="aceite_contato" type="checkbox" aria-describedby="f-telefone"> Pode me chamar no WhatsApp para combinar a conversa (opcional)</label>
+      <div class="field">
+        <label for="f-interesse">O que te trouxe até a Telmi?</label>
+        <select id="f-interesse" name="interesse" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="empresa">Tenho interesse em usar na minha empresa</option>
+          <option value="conhecer">Quero só conhecer melhor</option>
+          <option value="parceria">Quero fazer uma parceria</option>
+          <option value="outro">Outro assunto</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-segmento">Qual é o segmento da empresa?</label>
+        <select id="f-segmento" name="segmento" required>
+          <option value="" disabled selected>Selecione</option>
+          <option>Restaurantes e fast food</option>
+          <option>Indústria de alimentos</option>
+          <option>Varejo</option>
+          <option>Logística</option>
+          <option>Outra indústria</option>
+          <option>Outro</option>
+        </select>
       </div>
       <div class="field">
         <label for="f-tamanho">Quantos funcionários trabalham na empresa?</label>
-        <select id="f-tamanho" name="tamanho">
+        <select id="f-tamanho" name="tamanho" required>
+          <option value="" disabled selected>Selecione</option>
           <option>1–50</option>
           <option>51–200</option>
-          <option selected>201–1.000</option>
+          <option>201–1.000</option>
           <option>Mais de 1.000</option>
         </select>
       </div>
+      <div class="hp" aria-hidden="true">
+        <label for="f-ref-extra">Deixe em branco</label>
+        <input id="f-ref-extra" name="ref_extra" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <button class="btn btn-primary btn-lg" type="submit" style="width:100%">Enviar mensagem</button>
-      <p class="form-note">Sem spam — a gente responde em até 1 dia útil.</p>
+      <p class="form-note" aria-live="polite">Sem spam. A gente te responde rapidinho por e-mail.</p>
     </form>
   </div>
 </section>
@@ -381,6 +413,13 @@ window.tlm = (function(){
     btn.disabled = true;
     var original = btn.textContent;
     btn.textContent = 'Enviando…';
+    function utm(){
+      var q = new URLSearchParams(location.search), out = {}, any = false;
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'].forEach(function(k){
+        var v = q.get(k); if (v) { out[k] = v.slice(0, 200); any = true; }
+      });
+      return any ? out : null;
+    }
     var SB_KEY = 'sb_publishable_ipFi9UJwiyWQy4yZXoXjzA_Pwo2_h5i';
     fetch('https://itujwigckxlestpmmvbr.supabase.co/functions/v1/site-lead', {
       method: 'POST',
@@ -389,14 +428,26 @@ window.tlm = (function(){
         nome: f.nome.value,
         empresa: f.empresa.value,
         email: f.email.value,
-        tamanho: f.tamanho.value
+        telefone: f.telefone.value,
+        aceite_contato: f.aceite_contato.checked,
+        segmento: f.segmento.value,
+        interesse: f.interesse.value,
+        tamanho: f.tamanho.value,
+        ref_extra: f.ref_extra.value,
+        pagina: location.pathname,
+        referrer: document.referrer || null,
+        utm: utm()
       })
     }).then(function(res){
       if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json().catch(function(){ return {}; });
+    }).then(function(data){
       if (window.tlm) tlm.track('form_submit');
-      f.innerHTML = '<div class="form-ok"><div class="ok-emoji">💚</div>' +
-        '<h3>Recebido!</h3>' +
-        '<p>Obrigado pelo interesse — a gente te responde em até 1 dia útil.</p></div>';
+      var msg = data && data.emailed
+        ? 'Acabamos de te mandar um e-mail para marcar uma conversa. Se não aparecer, dá uma olhada no spam ou em Promoções.'
+        : 'Obrigado pelo interesse! A gente te responde por e-mail em até 1 dia útil.';
+      f.innerHTML = '<div class="form-ok" role="status"><div class="ok-emoji">💚</div>' +
+        '<h3>Recebido!</h3><p>' + msg + '</p></div>';
     }).catch(function(){
       btn.disabled = false;
       btn.textContent = original;
