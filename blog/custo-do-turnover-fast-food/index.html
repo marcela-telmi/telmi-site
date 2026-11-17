@@ -327,7 +327,7 @@ window.tlm = (function(){
         <input id="f-ref-extra" name="ref_extra" type="text" tabindex="-1" autocomplete="off">
       </div>
       <button class="btn btn-primary btn-lg" type="submit" style="width:100%">Enviar mensagem</button>
-      <p class="form-note" aria-live="polite">Sem spam. A gente te responde rapidinho por e-mail.</p>
+      <p class="form-note" aria-live="polite">Sem spam. Em breve entraremos em contato.</p>
     </form>
   </div>
 </section>
@@ -441,13 +441,10 @@ window.tlm = (function(){
     }).then(function(res){
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json().catch(function(){ return {}; });
-    }).then(function(data){
+    }).then(function(){
       if (window.tlm) tlm.track('form_submit');
-      var msg = data && data.emailed
-        ? 'Acabamos de te mandar um e-mail para marcar uma conversa. Se não aparecer, dá uma olhada no spam ou em Promoções.'
-        : 'Obrigado pelo interesse! A gente te responde por e-mail em até 1 dia útil.';
       f.innerHTML = '<div class="form-ok" role="status"><div class="ok-emoji">💚</div>' +
-        '<h3>Recebido!</h3><p>' + msg + '</p></div>';
+        '<h3>Recebido!</h3><p>Obrigado pelo interesse! Em breve entraremos em contato.</p></div>';
     }).catch(function(){
       btn.disabled = false;
       btn.textContent = original;
